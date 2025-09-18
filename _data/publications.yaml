@@ -18,7 +18,7 @@ papers:
     authors: "Eric Chen, Tiffany Tang, Genevera Allen"
     venue: "ArXiv preprint"
     selected: y
-    categories: ["all"]
+    categories: ["all", "explainable"]
 
   - title: "Deep Memory Unrolled Networks for Solving Imaging Linear Inverse Problems"
     authors: "Yuxi Chen, Xi Chen, Shirin Jalali, Arian Maleki"
