@@ -1,10 +1,8 @@
 #!/bin/sh
 
 # Upload to server
-scp -r _site/* msaveski@ovid.u.washington.edu:public_html/
+# Replace with your server details:
+# scp -r _site/* [YOUR_USERNAME]@[YOUR_SERVER]:[YOUR_PATH]/
 
 # make sure to fix the permissions on the server
 # chmod -R 750 *
-
-
-

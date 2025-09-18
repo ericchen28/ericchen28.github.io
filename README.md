@@ -1,36 +1,70 @@
-# Martin Saveski's Website
+# Academic Website Template
 
-## Updates guide
-Change one of the files in `_data`, unless you are changing the look of the website.
+This is a clean Jekyll-based academic website template. Originally created by Martin Saveski.
 
-Test changes with:
-```
-jekyll serve
-```
+## Setup Guide
 
-Push to the ML web directory:
-```
-rm -rf public_html
-mkdir public_html
-```
-```
-./__deploy.sh
-```
+1. **Install Jekyll** (if not already installed):
+   ```bash
+   gem install jekyll bundler
+   ```
 
-More info on the [Media Lab wiki](http://wiki.media.mit.edu/view/Necsys/WebPagePersonal).
+2. **Test locally**:
+   ```bash
+   jekyll serve
+   ```
+   Then visit `http://localhost:4000` in your browser.
 
-**Stanford links**
-- Use fetch!
-- [Basic WWW for Individual Users](https://uit.stanford.edu/service/web/centralhosting/howto_user)
-- [AFS File Transfer](https://uit.stanford.edu/service/afs/file-transfer/macintosh)
+3. **Deploy to GitHub Pages** (recommended):
+   - Push this repository to GitHub
+   - Enable GitHub Pages in repository settings
+   - Your site will be available at `https://[YOUR_GITHUB_USERNAME].github.io/[REPOSITORY_NAME]`
 
+## Files to Edit
+
+### Essential Files to Customize:
+
+1. **`_data/main_info.yaml`** - Your basic information
+   - Name, title, email
+   - Social media links
+   - Profile picture path
+
+2. **`index.html`** - Main page content
+   - Bio section
+   - Research interests
+   - Any additional sections
+
+3. **`_data/publications.yaml`** - Your publications
+   - Add your papers, conference proceedings, etc.
+   - Mark selected papers with `selected: y`
+
+4. **`_data/experience.yaml`** - Your timeline/CV
+   - Education history
+   - Work experience
+   - Internships
+
+5. **`_data/projects.yaml`** - Research projects (optional)
+   - Project titles and descriptions
+   - Thumbnail images
+   - Links to project pages
+
+6. **`_config.yml`** - Site configuration
+   - Update the `baseurl` to match your GitHub username or custom domain
+
+7. **`_layouts/default.html`** - Site metadata
+   - Update meta tags for SEO
+   - Modify navigation if needed
+
+### Asset Folders:
+
+- **`assets/profile-pics/`** - Add your profile photo here
+- **`assets/cv/`** - Add your CV as `cv_web.pdf`
+- **`assets/publications/`** - Store publication PDFs and slides
+- **`assets/projects/`** - Store project images and files
 
 ## External Libraries
+
 - Framework: [Jekyll](http://jekyllrb.com/)
-- CSS
-  - [Skeleton](getskeleton.com)
-  - Tabs: [Skeleton Tabs](https://github.com/nathancahill/skeleton-tabs)
-  - Experience: [Timeline](https://codepen.io/NilsWe/pen/FemfK)
-  - Icons: [Font Awesome](http://fontawesome.io/)
-- JS
-  - [Jquery (3.1.1)](https://jquery.com/)
+- CSS: [Skeleton](http://getskeleton.com)
+- Icons: [Font Awesome](http://fontawesome.io/)
+- Academic Icons: [Academicons](https://jpswalsh.github.io/academicons/)

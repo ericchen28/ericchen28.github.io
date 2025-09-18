@@ -6,33 +6,8 @@ title: Home
 <div class="docs-section" id="bio">
   <h4>Bio</h4>
   <p>
-  My research develops tools for analyzing <b>large-scale social data</b>, aiming to provide a better understanding of <b>social structure and behaviors</b> online while also impacting the <b>design of digital social systems</b>. 
-  My recent work has focused on social media algorithms
-  [<a href="assets/publications/2024_feedwizard/paper.pdf" target="_blank">ArXiv'24</a>,
-  <a href="assets/publications/2023_embedding_societal_values/paper.pdf" target="_blank">JOTS'23</a>],
-  reducing political polarization online 
-  [<a href="assets/publications/2022_newsbridge/paper.pdf" target="_blank">ICWSM'22a</a>,
-  <a href="assets/publications/2022_flipfeed/paper.pdf" target="_blank">ICWSM'22b</a>,
-  <a href="assets/publications/2021_balanced_inf_max/paper.pdf" target="_blank">WSDM'21</a>,
-  <a href="assets/publications/2018_social_mirror/paper.pdf" target="_blank">WWW'18</a>],
-  improving the health of online conversations 
-  [<a href="assets/publications/2021_dtox/paper.pdf" target="_blank">WWW'21</a>, 
-  <a href="assets/publications/2021_social_catalysts/paper.pdf" target="_blank">CSCW'21</a>], 
-  and causal inference in social systems 
-  [<a href="assets/publications/2024_ope_lipschitz/paper.pdf" target="_blank">ICML'24</a>,
-  <a href="assets/publications/2023_peer_review/paper.pdf" target="_blank">NeurIPS'23</a>,
-  <a href="assets/publications/2017_detecting_network_effects/paper.pdf" target="_blank">KDD'17</a>,
-  <a href="assets/publications/2019_biometrika/paper.pdf" target="_blank">Biometrika'19</a>]. 
-  My research often falls at the intersections of Social Networks, Machine Learning, and Causal Inference.
-  </p>
-
-  <p>
-  I'm an Assistant Professor in the Information School at the University of Washington.
-  Before joining UW, I was a Postdoc at Stanford University, mentored by <a href="https://web.stanford.edu/~jugander/" target="_blank">Johan Ugander</a>.
-  I received my Ph.D. from MIT in 2020 under the supervision of Deb Roy. 
-  Prior to coming to MIT, I spent one year in Paris and one year in Barcelona doing a M.Sc. in Data mining and Knowledge Management. 
-  I got my B.Sc. from Staffordshire University with First Class honors in Computer Science. 
-  Throughout my graduate studies, I spent several summers doing internships in industry, including Yahoo! Labs, Amazon, LinkedIn, and Facebook.
+  I am a first year PhD student at Carnegie Mellon University. Previously, I received my bachelor's degrees in Computer Science and Statistics from Columbia University. I am broadly interested in the intersection of causal inference, data-driven decision-making, explainable AI, and uncertainty quantification.
+  Specifically, I hope to develop effective, reliable, and scalable tools for real-world problems that build on mathematical insights.
   </p> 
 </div>
 
@@ -66,88 +41,58 @@ title: Home
 <div class="docs-section" id="publications">
   <h4>Publications</h4>
 
-  <p>Most recent publications on <a href="{{ site.data.main_info.google_scholar }}" target="_blank">Google Scholar</a>.<br/>
-  <sup>‡</sup> indicates equal contribution.
+  <p>Most recent publications on <a href="{{ site.data.main_info.google_scholar }}" target="_blank">Google Scholar</a>.
   </p>
 
   <ul class="tab-nav">
-    <li><div class="button active" data-ref="#papers-selected">Selected</div></li>
-    <li><div class="button" data-ref="#papers-all">All</div></li>
+    {% for category in site.data.publications.categories %}
+      <li><div class="button {% if forloop.first %}active{% endif %}" data-ref="#papers-{{ category.id }}">{{ category.name }}</div></li>
+    {% endfor %}
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane active" id="papers-selected">
-      {% assign selected_papers = site.data.publications.papers | where: "selected", "y" %}
-      {% for paper in selected_papers %}
-        <div class="paper">
-          <p class="title"><b>{{ paper.title }}</b></p>
-          <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
-           <div class="paper-buttons">
-            {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
-            {% endif %}
+    {% for category in site.data.publications.categories %}
+      <div class="tab-pane {% if forloop.first %}active{% endif %}" id="papers-{{ category.id }}">
+        {% for paper in site.data.publications.papers %}
+          {% if paper.categories contains category.id %}
+            <div class="paper">
+              <p class="title" style="margin-bottom: 1px;">
+                <b>{{ paper.title }}</b>
+                {% if paper.paper_pdf %}
+                  <a href="{{ paper.paper_pdf }}" target="_blank" style="margin-left: 4px; font-size: 11px; padding: 0px 4px; background: white; border: 1px solid #bbb; color: #555; text-decoration: none; border-radius: 3px; vertical-align: 1px; display: inline-block; line-height: 1.4;">PDF</a>
+                {% endif %}
+                {% if paper.note %}
+                  <span style="color: #ff6b6b; font-weight: normal; margin-left: 8px;">| {{ paper.note }}</span>
+                {% endif %}
+              </p>
+              <p style="margin-bottom: 1px;">{{ paper.authors }}</p>
+              <p style="margin-bottom: 10px;"><i>{{ paper.venue }}</i></p>
+              <div class="paper-buttons">
+                {% if paper.slides %}
+                  <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
+                {% endif %}
 
-            {% if paper.slides %}
-              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
-            {% endif %}
+                {% if paper.poster %}
+                  <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
+                {% endif %}
 
-            {% if paper.poster %}
-              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
-            {% endif %}
+                {% if paper.video %}
+                  <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
+                {% endif %}
 
-            {% if paper.video %}
-              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
-            {% endif %}
+                {% if paper.code %}
+                  <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
+                {% endif %}
 
-            {% if paper.code %}
-              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
-            {% endif %}
-
-            {% if paper.data %}
-              <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
-            {% endif %}
-
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-
-    <div class="tab-pane" id="papers-all">
-      {% for paper in site.data.publications.papers %}
-        <div class="paper">
-          <p class="title"><b>{{ paper.title }}</b></p>
-          <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
-           <div class="paper-buttons">
-            {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
-            {% endif %}
-
-            {% if paper.slides %}
-              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
-            {% endif %}
-
-            {% if paper.poster %}
-              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
-            {% endif %}
-
-            {% if paper.video %}
-              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
-            {% endif %}
-
-            {% if paper.code %}
-              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
-            {% endif %}
-
-            {% if paper.data %}
-              <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
-            {% endif %}
-
-          </div>
-        </div>
-      {% endfor %}
-    </div>
+                {% if paper.data %}
+                  <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -228,9 +173,7 @@ title: Home
 
 <!-- ========== RESUME ========== -->
 <div class="docs-section" id="resume">
-  <h4>Vitæ</h4>
-
-  <p>Full Resume in <a href={{ "/assets/cv/cv_web.pdf" | prepend: site.baseurl }} target="_blank">PDF</a>.</p>
+  <h4>Vita</h4>
 
   <!-- The Timeline -->
   <ul class="timeline">
@@ -253,16 +196,6 @@ title: Home
 </div>
 
 <div class="docs-section" id="template">
-  <h4>Website Design</h4>
-  Since I made this website, many people have found this Jekyll template useful [
-  {% for template_user in site.data.template_users.template_users %}
-  <a href="{{ template_user }}" target="_blank">{{ forloop.index }}</a>{% if forloop.last %}{% else %},{% endif %}
-  {% endfor %}
-  ].
-  <!--<br/>-->
-  You can find all the code needed to build your website in this <a href="https://github.com/msaveski/www_personal" target="_blank">GitHub repo</a>.
-  Feel free to use it. <br/>
-
-  If you end up using it, please link to here and drop me an email.
-  I'm always happy to see people using it.
+  <h4>Acknowledgement</h4>
+  This website is adopted from Martin Saveski. You can find the original template <a href="https://github.com/msaveski/www_personal" target="_blank">here</a>.
 </div>  
