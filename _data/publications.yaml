@@ -30,9 +30,9 @@ papers:
   - title: "Comprehensive Examination of Unrolled Networks for Solving Linear Inverse Problems"
     authors: "Yuxi Chen, Xi Chen, Arian Maleki, Shirin Jalali"
     venue: "Entropy (Special Issue on Advances in Computational Imaging), 2025"
-    paper_pdf: "https://www.mdpi.com/1099-4300/27/9/929/pdf"
+    paper_pdf: "https://www.mdpi.com/1099-4300/27/9/929"
     selected: y
-    categories: ["selected", "all", "stats_ml"]
+    categories: ["all"]
 
   - title: "Joint Optimization of Multiple Resources for Distributed Service Deployment in Satellite Edge Computing Networks"
     authors: "Jiachen Sun, Xu Chen, Zhen Li, Jiawei Wang, Yuxi Chen"
