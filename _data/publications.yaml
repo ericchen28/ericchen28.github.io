@@ -1,16 +1,18 @@
 categories:
   - id: "selected"
-    name: "SELECTED PAPERS"
+    name: "SELECTED"
   - id: "all"
     name: "ALL"
   - id: "causal"
     name: "CAUSAL INFERENCE"
+  - id: "comp_bio"
+    name: "COMPUTATIONAL BIOLOGY"
   - id: "decision_making"
     name: "DATA-DRIVEN DECISION-MAKING"
   - id: "explainable"
     name: "EXPLAINABLE AI"
   - id: "stats_ml"
-    name: "STATS+ML"
+    name: "STATISTICAL MACHINE LEARNING"
 
 papers:
 
